@@ -1,0 +1,15 @@
+[Unit]
+Description=OpenTelemetry GPU Collector
+
+[Service]
+Type=simple
+Environment=OTEL_GPU_COLLECTOR_MODE=light
+Environment="OTEL_EXPORTER_OTLP_ENDPOINT={{ endpoint }}"
+Environment=OTEL_EXPORTER_OTLP_PROTOCOL=grpc
+Environment="OTEL_EXPORTER_OTLP_HEADERS=Authorization=Bearer {{ token }}"
+ExecStart=%h/.local/bin/opentelemetry-gpu-collector
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
