@@ -23,12 +23,12 @@ def install_game(app_id, executable, local_config: steam.LocalConfig):
 
     (
         local_config
-        .get("UserLocalConfigStore")
-        .get("Software")
-        .get("Valve")
-        .get("Steam")
-        .get("apps")
-        .get(app_id)
+        .child("UserLocalConfigStore")
+        .child("Software")
+        .child("Valve")
+        .child("Steam")
+        .child("apps")
+        .child(app_id)
         .set("LaunchOptions", 'WINEDLLOVERRIDES="d3d9=n,b" %command%')
     )
 
