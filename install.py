@@ -6,6 +6,7 @@ from tasks.grid import sync_grid
 from tasks.otel_gpu_collector import install_otel_gpu_collector
 from tasks.retrodeck import install_retrodeck
 from tasks.sdgyrodsu import install_sdgyrodsu
+from lib.hardware import Model
 from lib.steam import LocalConfig
 
 if host.get_fact(Directory, path=f"{host.get_fact(Home)}/.steam") is not None:
@@ -19,5 +20,5 @@ if host.data.get("otlp_endpoint") and host.data.get("otlp_token"):
 if host.data.get("install_retrodeck", False):
     install_retrodeck()
 
-if host.data.get("install_sdgyrodsu", False):
+if host.get_fact(Model) == "Galileo":
     install_sdgyrodsu()
