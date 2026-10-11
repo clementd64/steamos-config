@@ -1,5 +1,4 @@
 import json
-import os
 import re
 from urllib.request import Request, urlopen
 
@@ -62,8 +61,8 @@ def install_otel_gpu_collector():
         src="templates/otel-gpu-collector.service.j2",
         dest=".config/systemd/user/otel-gpu-collector.service",
         mode="0600",
-        endpoint=host.data.get("otlp_endpoint"),
-        token=host.data.get("otlp_token"),
+        endpoint="https://otlp.uptrace.dev:4317",
+        uptrace_dsn=host.data.get("uptrace_dsn"),
     )
 
     systemd.service(

@@ -14,7 +14,7 @@ if host.get_fact(Directory, path=f"{host.get_fact(Home)}/.steam") is not None:
     with LocalConfig() as local_config:
         install_novafix(local_config)
 
-if host.data.get("otlp_endpoint") and host.data.get("otlp_token"):
+if host.data.get("uptrace_dsn"):
     install_otel_gpu_collector()
 
 if host.data.get("install_retrodeck", False):
