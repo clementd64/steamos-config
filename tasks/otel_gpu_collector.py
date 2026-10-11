@@ -5,6 +5,7 @@ from urllib.request import Request, urlopen
 from pyinfra import host
 from pyinfra.api import deploy
 from pyinfra.operations import files, systemd
+from pyinfra.operations.util import any_changed
 
 
 VERSION = "0.0.8"
@@ -48,7 +49,7 @@ def install_otel_gpu_collector():
         path=".config/systemd/user",
     )
 
-    files.download(
+    download_bin = files.download(
         name=f"Download OpenTelemetry GPU Collector {VERSION}",
         src=RELEASE_URL,
         dest=".local/bin/opentelemetry-gpu-collector",
@@ -56,7 +57,7 @@ def install_otel_gpu_collector():
         mode="0755",
     )
 
-    files.template(
+    service_file = files.template(
         name="Install OpenTelemetry GPU Collector user service",
         src="templates/otel-gpu-collector.service.j2",
         dest=".config/systemd/user/otel-gpu-collector.service",
@@ -73,4 +74,5 @@ def install_otel_gpu_collector():
         restarted=True,
         running=True,
         user_mode=True,
+        _if=any_changed(download_bin, service_file),
     )
