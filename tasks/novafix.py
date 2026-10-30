@@ -7,8 +7,8 @@ from pyinfra.operations import files
 from lib import steam
 
 
-RELEASE_URL = "https://github.com/Kartin8/FF13NovaFix/releases/download/v1.0.1/d3d9.dll"
-RELEASE_SHA256 = "7522fdde7b42e28ed1344bfa6ea4c5c6dee3b14669ef465463b06436ec2c9938"
+RELEASE_URL = "https://github.com/Kartin8/FF13NovaFix/releases/download/v1.0.2/d3d9.dll"
+RELEASE_SHA256 = "6d4fbfd55ba000655fad3c898838f95aeae5a4116a24caddcf2d0bd45713fd2f"
 
 
 def install_game(app_id, executable, local_config: steam.LocalConfig):
