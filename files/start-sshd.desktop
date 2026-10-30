@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Start SSH
+Comment=Start the SSH server
+Exec=pkexec /usr/bin/systemctl start sshd
+Icon=network-server
+Terminal=false
