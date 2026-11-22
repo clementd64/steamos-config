@@ -8,7 +8,7 @@ from lib import steam
 
 
 RELEASE_URL = "https://github.com/Kartin8/FF13NovaFix/releases/download/v1.0.2/d3d9.dll"
-RELEASE_SHA256 = "6d4fbfd55ba000655fad3c898838f95aeae5a4116a24caddcf2d0bd45713fd2f"
+RELEASE_SHA256 = "1e2c96f2101f81bf7d6097e9725c508b127cd143aeb07decbcdda56291b6a458"
 
 
 def install_game(app_id, executable, local_config: steam.LocalConfig):
